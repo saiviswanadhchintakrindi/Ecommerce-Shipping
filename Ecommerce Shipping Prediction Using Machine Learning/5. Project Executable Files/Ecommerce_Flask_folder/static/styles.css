@@ -1,0 +1,248 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f4f7f6;
+}
+
+header {
+    background-color: #1e3a8a;
+    color: white;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: bold;
+    margin-right: 300px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #fbbf24;
+}
+
+.container {
+    width: 85%;
+    margin: auto;
+    padding: 20px;
+}
+
+section {
+    padding: 80px 0;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+}
+
+section#home {
+    background: url('shipping.png') no-repeat center center;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 80px;
+    z-index: 1;
+}
+
+.home-content {
+    max-width: 600px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    border-radius: 15px;
+    animation: fadeIn 1.5s ease-in-out;
+    margin-left: 700px;
+    margin-bottom: 100px;
+}
+
+.home-text h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.home-text p {
+    font-size: 20px;
+}
+
+.btn-primary {
+    background-color: #fbbf24; 
+    border-color: #fbbf24;
+    color: black;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 50px;
+}
+
+.btn-primary:hover {
+    background-color: #f59e0b; 
+    color: white;
+}
+
+.section-content {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+}
+
+section h2 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+section#about {
+    background-color: #e2e8f0; 
+}
+
+section#predict {
+    background-color: #e2e8f0; 
+}
+
+section#skills {
+    background-color: #e2e8f0; 
+}
+
+section#team {
+    background-color: #e2e8f0; 
+}
+
+.section-content i {
+    color: #1e3a8a; /* Navy Blue */
+    margin-bottom: 20px;
+}
+
+#loader {
+    display: none;
+    text-align: center;
+}
+
+#loader img {
+    width: 50px;
+    height: 50px;
+}
+
+.skill-bar {
+    margin: 20px 0;
+}
+
+.skill-bar p {
+    margin: 0;
+    font-size: 18px;
+}
+
+.bar {
+    background-color: #e1e1e1;
+    border-radius: 25px;
+    overflow: hidden;
+    margin-top: 5px;
+    height: 25px;
+}
+
+.bar .progress {
+    background-color: #1e3a8a; /* Navy Blue */
+    color: white;
+    text-align: center;
+    line-height: 25px;
+    height: 100%;
+    border-radius: 25px 0 0 25px;
+}
+
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.team-member {
+    width: 45%;
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: black;
+}
+
+footer {
+    background-color: #1e3a8a; 
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer p {
+    margin: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin-bottom: 10px;
+    }
+
+    .team-member {
+        width: 100%;
+    }
+
+    section#home {
+        align-items: center;
+        padding-right: 0;
+    }
+}

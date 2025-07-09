@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce Shipping Prediction</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+        function showLoader() {
+            document.getElementById("loader").style.display = "block";
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Ecommerce Shipping Prediction</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#predict">Predict</a></li>
+                    <li><a href="#skills">Skills Used</a></li>
+                    <li><a href="#team">Team</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home">
+        <div class="home-content">
+            <div class="home-text">
+                <h2>Welcome to our Ecommerce Shipping Prediction Project</h2>
+                <p>Use the navigation above to learn more about our project and predict your shipping time.</p>
+            </div>
+            <a href="#predict" class="btn btn-primary">Get Started</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container section-content">
+        <i class="fas fa-box fa-3x"></i>
+            <h2>About</h2>
+            <hr>
+            <p>Ecommerce shipping prediction is the process of estimating the whether the product reached on time. which is based on various factors such as the origin and destination of the package, the shipping method selected by the customer, the carrier used for shipping, and any potential delays or issues that may arise during the shipping process. Machine learning models can be used to make accurate predictions about shipping times based on historical data and real-time updates from carriers. These models may take into account factors such as weather conditions, traffic, and other external factors that can impact delivery times. Over All Ecommerce shipping prediction is an important tool for ecommerce businesses that want to provide accurate delivery estimates to their customers and improve their overall customer experience</p>
+            <p>We used Machine learning classification algorithms, to train a model with different factors as features to predict whether the delivery will be on time or delayed. This project aims to predict whether a product will reach its destination on time based on various factors</p>        
+            <hr>
+            <p>Here are the features you need to fill in the predict section,</p>
+            <ul>
+                <li>Warehouse Block: A, B, C, D, E</li>
+                <li>Mode of Shipment: Ship, Flight, Road</li>
+                <li>Customer Care Calls: 1 or more (Integer)</li>
+                <li>Customer Rating: 1 to 5 (Integer)</li>
+                <li>Cost of the Product: your profuct cost(Number)</li>
+                <li>Prior Purchases: Number of prior purchase you have done(Integer 1 or more)</li>
+                <li>Product Importance: Low, Medium, High</li>
+                <li>Gender: Male, Female</li>
+                <li>Discount Offered: Percentage of discount offered (Number)</li>
+                <li>Weight in grams: Weight (Number)</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="predict">
+        <div class="container section-content">
+        <i class="fas fa-truck fa-3x"></i>
+            <h2>Predict</h2>
+            <hr>
+            <p> Don't know what to fill, got to about section</p>
+            <a href="#about" class="btn btn-primary">Go to About</a>
+            <hr>
+            <div id="loader" style="display: none;">
+                <img src="static/loader.gif" alt="Loading...">
+            </div>
+            {% if prediction_text %}
+            <div id="result">
+                <h2>Prediction: {{ prediction_text }}</h2>
+            </div>
+            {% endif %}
+            <form method="post" action="/predict#predict" onsubmit="showLoader()">
+                <div class="form-group">
+                    <label for="Warehouse_block">Warehouse Block:</label>
+                    <select name="Warehouse_block" id="Warehouse_block" class="form-control">
+                        <option value="0">A</option>
+                        <option value="1">B</option>
+                        <option value="2">C</option>
+                        <option value="3">D</option>
+                        <option value="4">E</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Mode_of_Shipment">Mode of Shipment:</label>
+                    <select name="Mode_of_Shipment" id="Mode_of_Shipment" class="form-control">
+                        <option value="0">Ship</option>
+                        <option value="1">Flight</option>
+                        <option value="2">Road</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Customer_care_calls">Customer Care Calls:</label>
+                    <input type="number" name="Customer_care_calls" id="Customer_care_calls" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="Customer_rating">Customer Rating:</label>
+                    <input type="number" name="Customer_rating" id="Customer_rating" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="Cost_of_the_Product">Cost of the Product:</label>
+                    <input type="number" name="Cost_of_the_Product" id="Cost_of_the_Product" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="Prior_purchases">Prior Purchases:</label>
+                    <input type="number" name="Prior_purchases" id="Prior_purchases" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="Product_importance">Product Importance:</label>
+                    <select name="Product_importance" id="Product_importance" class="form-control">
+                        <option value="1">Low</option>
+                        <option value="2">Medium</option>
+                        <option value="0">High</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Gender">Gender:</label>
+                    <select name="Gender" id="Gender" class="form-control">
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Discount_offered">Discount Offered:</label>
+                    <input type="number" name="Discount_offered" id="Discount_offered" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="Weight_in_gms">Weight in grams:</label>
+                    <input type="number" name="Weight_in_gms" id="Weight_in_gms" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">Predict</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container section-content">
+        <i class="fas fa-tools fa-3x"></i>
+            <h2>Skills Used</h2>
+            <hr>
+            <div class="skill-bar">
+                <p>Python</p>
+                <div class="bar">
+                    <div class="progress" style="width: 90%;">90%</div>
+                </div>
+            </div>
+            <div class="skill-bar">
+                <p>Pandas</p>
+                <div class="bar">
+                    <div class="progress" style="width: 85%;">85%</div>
+                </div>
+            </div>
+            <div class="skill-bar">
+                <p>Numpy</p>
+                <div class="bar">
+                    <div class="progress" style="width: 80%;">80%</div>
+                </div>
+            </div>
+            <div class="skill-bar">
+                <p>Machine Learning</p>
+                <div class="bar">
+                    <div class="progress" style="width: 75%;">75%</div>
+                </div>
+            </div>
+            <div class="skill-bar">
+                <p>Flask</p>
+                <div class="bar">
+                    <div class="progress" style="width: 70%;">70%</div>
+                </div>
+            </div>
+            <div class="skill-bar">
+                <p>HTML, CSS, JavaScript</p>
+                <div class="bar">
+                    <div class="progress" style="width: 85%;">85%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team">
+        <div class="container section-content">
+        <i class="fas fa-users fa-3x"></i>
+            <h2>Team</h2>
+            <hr>
+            <div class="team-grid">
+                <div class="team-member">
+                    <h3>Srikar Goli(Team Lead)</h3>
+                    <p>Email: srikar.22bce9946@vitapstudent.ac.in</p>
+                </div>
+                <div class="team-member">
+                    <h3>Sai Viswanadh Chinthakrindi</h3>
+                    <p>Email: viswanadh.22bce20531@vitapstudent.ac.in</p>
+                </div>
+                <div class="team-member">
+                    <h3>Kesava Naga Sai Durga Vardhan Parepalli</h3>
+                    <p>Email: durgavardhan.22bce20530@vitapstudent.ac.in</p>
+                </div>
+                <div class="team-member">
+                    <h3>Narendra Aenuganti</h3>
+                    <p>Email: narendra.22bec7188@vitapstudent.ac.in</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 Ecommerce Shipping Prediction. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
